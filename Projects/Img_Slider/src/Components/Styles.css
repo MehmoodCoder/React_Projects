@@ -1,0 +1,137 @@
+body {
+    background-color: #212121;
+    color: #fff;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 4 / 3;
+    margin: 20px auto;
+    background-color: #111;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.current-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0px 0px 7px #666;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.hide-img {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.arrow {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #fff;
+    filter: drop-shadow(0px 0px 5px #555);
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.arrow:hover {
+    color: #22d3ee;
+    filter: drop-shadow(0px 0px 5px #ffffff);
+    transform: scale(1.1);
+}
+
+.arrow:active {
+    transform: scale(0.9);
+}
+
+.arrow-left {
+    left: 1rem;
+}
+
+.arrow-right {
+    right: 1rem;
+}
+
+.circle-indicators {
+    display: flex;
+    position: absolute;
+    bottom: 1rem;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 6px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.current-indicator {
+    background-color: #22d3ee;
+    height: 12px;
+    width: 24px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin: 0 0.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hide-indicator {
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 12px;
+    border-radius: 50%;
+}
+
+.hide-indicator:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.loading, .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 640px) {
+    .container {
+        max-width: 90%;
+        border-radius: 16px;
+    }
+    .current-img {
+        border-radius: 16px;
+    }
+    .arrow {
+        width: 2rem;
+        height: 2rem;
+    }
+    .arrow-left {
+        left: 0.5rem;
+    }
+    .arrow-right {
+        right: 0.5rem;
+    }
+    .current-indicator {
+        height: 10px;
+        width: 18px;
+    }
+    .hide-indicator {
+        width: 10px;
+    }
+}

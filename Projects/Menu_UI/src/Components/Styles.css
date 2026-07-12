@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top left, #17635d 0%, #102222 45%, #0b1412 100%);
+    color: #f5f7fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.menu-list-container {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 26px 20px 42px;
+}
+
+.menu-tree-container {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+    list-style: none;
+    margin: 0;
+    padding: 12px;
+}
+
+.menu-tree-container li {
+    margin-bottom: 12px;
+}
+
+.menu-tree-container li:last-child {
+    margin-bottom: 0;
+}
+
+.menu-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.menu-items:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.menu-items p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.menu-items span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.menu-items span:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: scale(1.05);
+}
+
+.menu-tree-container .menu-tree-container {
+    margin-top: 10px;
+    margin-left: 0;
+    padding-left: 18px;
+    width: calc(100% - 18px);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.menu-tree-container .menu-tree-container .menu-items {
+    background: rgba(255, 255, 255, 0.03);
+    width: 100%;
+}
+
+.menu-tree-container .menu-tree-container .menu-items:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 640px) {
+    .menu-list-container {
+        padding: 18px 14px 28px;
+    }
+
+    .menu-items {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 14px;
+    }
+
+    .menu-items p {
+        font-size: 0.98rem;
+    }
+
+    .menu-items span {
+        width: 38px;
+        height: 38px;
+    }
+}

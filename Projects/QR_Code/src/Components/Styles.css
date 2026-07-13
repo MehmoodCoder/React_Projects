@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #0f2937 0%, #07121b 55%, #020608 100%);
+    color: #f4f7fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.card {
+    width: min(100%, 520px);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(18px);
+}
+
+h2 {
+    margin: 0 0 10px;
+    font-size: clamp(1.8rem, 2vw, 2.4rem);
+    letter-spacing: -0.03em;
+}
+
+.subtitle {
+    margin: 0 0 24px;
+    color: #cdd6e3;
+    line-height: 1.6;
+}
+
+.input-group {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 16px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: #f7fafc;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.input-group input:focus {
+    border-color: rgba(94, 207, 254, 0.8);
+    transform: translateY(-1px);
+}
+
+.input-group input::placeholder {
+    color: rgba(244, 247, 251, 0.62);
+}
+
+button {
+    border: none;
+    border-radius: 16px;
+    padding: 16px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 180ms ease, filter 180ms ease, background-color 180ms ease;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #4bb4ff 0%, #22d3ee 100%);
+    color: #041018;
+}
+
+.primary-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f4f7fb;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.secondary-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.status-text {
+    margin-bottom: 18px;
+    color: #9df3d4;
+    font-size: 0.98rem;
+}
+
+.qr-box {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 24px;
+    min-height: 360px;
+}
+
+.qr-box svg {
+    width: clamp(220px, 100%, 320px);
+    height: auto;
+}
+
+.qr-placeholder {
+    max-width: 320px;
+    text-align: center;
+    color: rgba(244, 247, 251, 0.7);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+@media (max-width: 520px) {
+    .card {
+        padding: 22px;
+    }
+
+    .input-group {
+        grid-template-columns: 1fr;
+    }
+
+    .actions-row {
+        justify-content: stretch;
+    }
+
+    .secondary-btn,
+    .primary-btn {
+        width: 100%;
+    }
+}

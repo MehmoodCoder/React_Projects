@@ -12,6 +12,11 @@ export default function Navbar() {
   const { searchParam, setSearchParam, handleSubmit, favoritesList } = context;
   const totalFavorites = favoritesList?.length ?? 0;
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    handleSubmit(e); 
+  };
+
   return (
     <nav className="sticky top-4 z-20 mb-6 rounded-[2rem] border border-white/70 bg-white/80 px-4 py-4 shadow-lg shadow-rose-100 backdrop-blur sm:px-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -26,7 +31,10 @@ export default function Navbar() {
           </span>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex w-full flex-col gap-2 sm:flex-row sm:items-center lg:max-w-xl lg:flex-1 lg:justify-end">
+        <form 
+          onSubmit={handleFormSubmit} 
+          className="flex w-full flex-col gap-2 sm:flex-row sm:items-center lg:max-w-xl lg:flex-1 lg:justify-end"
+        >
           <input
             type="text"
             name="search"

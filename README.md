@@ -9,9 +9,10 @@
 
 ---
 
-## 🔗 Live Deployments & Portfolios
+## 🔗 Live Deployments
 
 - 🌐 **Weather App (Live):** [mh56-weather-app.vercel.app](https://mh56-weather-app.vercel.app)
+- 🌐 **Food Recipe App (Live):** [mh56-food-recipe-app.vercel.app](https://mh56-food-recipe-app.vercel.app)
 - 🔗 **Source Code:** [github.com/MehmoodCoder](https://github.com/MehmoodCoder/React_Projects)
 
 ---

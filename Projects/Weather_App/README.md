@@ -160,6 +160,21 @@ npm run dev
 
 ---
 
+## 🌐 Deployment
+
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com)
+3. Click "New Project"
+4. Connect your GitHub repository
+5. Connect the exact project folder containing `package.json` to avoid nested directory issues
+6. Vercel automatically detects Vite settings
+7. Toggle the "Build Command" and write `npm run build` manually to override it
+8. Click "Deploy"
+
+---
+
 ## 🌐 API Link
 
 This project uses the OpenWeatherMap API to retrieve current weather data for searched cities.

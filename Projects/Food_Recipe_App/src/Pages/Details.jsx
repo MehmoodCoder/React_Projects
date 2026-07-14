@@ -30,8 +30,8 @@ export default function Details() {
 
         if (!isMounted) return;
 
-        if (data?.data) {
-          setRecipeDetailsData(data?.data);
+        if (data?.data?.recipe) {
+          setRecipeDetailsData(data.data);
         } else {
           setDetailsError("Recipe not found.");
         }
@@ -51,62 +51,69 @@ export default function Details() {
   }, [id, setRecipeDetailsData]);
 
   const currentRecipe = recipeDetailsData?.recipe;
-  const isFavorite =
-    favoritesList?.some((item) => item.id === currentRecipe?.id) ?? false;
+  const isFavorite = favoritesList?.some((item) => item.id === currentRecipe?.id) ?? false;
 
-  if (detailsLoading) return <div className="py-10">Loading... Please wait!</div>;
-  if (detailsError)
+  if (detailsLoading) {
     return (
-      <div className="py-10">
-        <p className="text-center text-black font-semibold">{detailsError}</p>
+      <div className="flex min-h-[50vh] items-center justify-center rounded-[2rem] bg-white/80 p-8 shadow-sm">
+        <p className="text-lg font-semibold text-slate-700">Loading recipe details...</p>
       </div>
     );
+  }
+
+  if (detailsError) {
+    return (
+      <div className="flex min-h-[50vh] items-center justify-center rounded-[2rem] bg-white/80 p-8 shadow-sm">
+        <p className="text-center text-lg font-semibold text-slate-700">{detailsError}</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto py-10 px-4 grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div className="w-full">
-        <div className="aspect-[4/3] overflow-hidden rounded-xl group bg-white/75">
-          <img
-            src={currentRecipe?.image_url}
-            alt="recipe"
-            className="w-full h-full object-cover block group-hover:scale-105 duration-300"
-          />
-        </div>
+    <div className="grid grid-cols-1 gap-10 rounded-[2rem] bg-white/80 p-4 shadow-sm sm:p-6 md:grid-cols-2 lg:p-8">
+      <div className="overflow-hidden rounded-[1.5rem] bg-slate-100">
+        <img
+          src={currentRecipe?.image_url}
+          alt={currentRecipe?.title || "recipe"}
+          className="h-full w-full object-cover duration-300 hover:scale-105"
+        />
       </div>
 
       <div className="flex flex-col gap-6">
         <div>
-          <span className="text-sm text-cyan-700 font-medium">
-            {currentRecipe?.publisher}
-          </span>
-          <h3 className="font-bold text-2xl truncate text-black">
-            {currentRecipe?.title}
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rose-600">
+            {currentRecipe?.publisher || "Recipe"}
+          </p>
+          <h3 className="mt-1 text-2xl font-bold text-slate-900 sm:text-3xl">
+            {currentRecipe?.title || "Recipe details"}
           </h3>
         </div>
 
         <button
           onClick={() => currentRecipe && handleAddToFavorite(currentRecipe)}
-          className="p-3 px-8 rounded-lg text-sm uppercase font-medium tracking-wider inline-block shadow-md bg-black text-white w-fit"
+          className="w-fit rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-slate-700"
           disabled={!currentRecipe}
         >
           {isFavorite ? "Remove from favorites" : "Add to favorites"}
         </button>
 
         <div>
-          <span className="text-2xl font-semibold text-black">
-            Ingredients:
-          </span>
-          <ul className="flex flex-col gap-3 mt-3">
-            {currentRecipe?.ingredients?.map((ingredient, idx) => (
-              <li key={idx} className="rounded-lg bg-white/70 p-3">
-                <span className="text-lg font-semibold text-black block">
-                  {ingredient.quantity} {ingredient.unit}
-                </span>
-                <span className="text-base font-semibold text-black">
-                  {ingredient.description}
-                </span>
+          <h4 className="text-xl font-semibold text-slate-900">Ingredients</h4>
+          <ul className="mt-3 flex flex-col gap-3">
+            {currentRecipe?.ingredients?.length ? (
+              currentRecipe.ingredients.map((ingredient, idx) => (
+                <li key={idx} className="rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700">
+                  <span className="font-semibold text-slate-900">
+                    {ingredient.quantity} {ingredient.unit}
+                  </span>
+                  <span className="ml-2">{ingredient.description}</span>
+                </li>
+              ))
+            ) : (
+              <li className="rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700">
+                No ingredients listed for this recipe.
               </li>
-            ))}
+            )}
           </ul>
         </div>
       </div>

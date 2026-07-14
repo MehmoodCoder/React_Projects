@@ -2,24 +2,30 @@ import { Link } from "react-router-dom";
 
 export default function RecipeItem({ item }) {
   return (
-    <div className="flex flex-col w-80 overflow-hidden p-5 bg-white/75 shadow-xl gap-5 border-2 rounded-2xl border-white">
-      <div className="h-40 flex justify-center overflow-hidden items-center rounded-xl">
-        <img src={item?.image_url} alt="recipe item" className="block w-full" />
+    <article className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-slate-100 bg-white shadow-lg shadow-slate-200/70 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="h-48 overflow-hidden bg-slate-100 sm:h-52">
+        <img
+          src={item?.image_url}
+          alt={item?.title || "recipe item"}
+          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+        />
       </div>
-      <div>
-        <span className="text-sm text-cyan-700 font-medium">
-          {item?.publisher}
-        </span>
-        <h3 className="font-bold text-2xl truncate text-black">
-          {item?.title}
-        </h3>
+      <div className="flex flex-1 flex-col gap-4 p-5">
+        <div>
+          <p className="text-sm font-semibold text-rose-600">
+            {item?.publisher || "Popular Recipe"}
+          </p>
+          <h3 className="mt-1 text-xl font-semibold text-slate-900">
+            {item?.title || "Recipe title"}
+          </h3>
+        </div>
         <Link
           to={`/recipe-item/${item?.id}`}
-          className="text-sm p-3 mt-5 px-8 rounded-lg uppercase font-medium tracking-wider inline-block shadow-md bg-black text-white"
+          className="mt-auto w-fit rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-slate-700"
         >
           Recipe Details
         </Link>
       </div>
-    </div>
+    </article>
   );
 }
